@@ -1,6 +1,9 @@
 package andlima.hafizhfy.challengetujuh.func
 
 import andlima.hafizhfy.challengetujuh.R
+import andlima.hafizhfy.challengetujuh.di.UserClient
+import andlima.hafizhfy.challengetujuh.local.datastore.UserManager
+import andlima.hafizhfy.challengetujuh.model.user.GetUserItem
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
@@ -16,7 +19,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.asLiveData
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Response
 import java.io.ByteArrayOutputStream
 
 // Function to easy making Toast -------------------------------------------------------------------
@@ -122,3 +131,71 @@ fun decodeBase64Image(base64String: String): Bitmap {
 }
 
 // END OF IMAGE CONVERT METHOD #####################################################################
+
+fun matchUserLocalAndDatabase(context: Context, lifecycleOwner: LifecycleOwner, action: (result: Boolean, response: List<GetUserItem>, message: String) -> Unit) {
+    val userManager = UserManager(context)
+
+    userManager.email.asLiveData().observe(lifecycleOwner, { email ->
+        userManager.password.asLiveData().observe(lifecycleOwner, { password ->
+
+            if (email != "" && password != "") {
+                UserClient.instance.getUser(email)
+                    .enqueue(object : retrofit2.Callback<List<GetUserItem>>{
+                        override fun onResponse(
+                            call: Call<List<GetUserItem>>,
+                            response: Response<List<GetUserItem>>
+                        ) {
+                            if (response.isSuccessful) {
+                                if (response.body()!!.isEmpty()) {
+                                    action(true, emptyList(), "Account banned")
+                                } else {
+                                    if ( response.body()!![0].email != email || response.body()!![0].password != password) {
+                                        action(true, emptyList(), "User data changed, please re-login")
+                                    } else {
+
+                                        action(true, response.body()!!, "")
+                                    }
+                                }
+                            }
+                        }
+                        override fun onFailure(call: Call<List<GetUserItem>>, t: Throwable) {
+                            action(false, emptyList(), "Connection error")
+                        }
+                    })
+            }
+            else {
+                action(false, emptyList(), "")
+            }
+        })
+    })
+}
+
+fun updateUserDataRealTime(context: Context, isDifferent: Boolean, response: List<GetUserItem>, message: String): Boolean {
+    val userManager = UserManager(context)
+
+    if (isDifferent) {
+        if (response.isNotEmpty()) {
+            GlobalScope.launch {
+                userManager.updateCurrentUserRealTimeData(
+                    response[0].username,
+                    response[0].avatar,
+                    response[0].complete_name,
+                    response[0].address,
+                    response[0].dateofbirth
+                )
+            }
+            return false
+        } else {
+            GlobalScope.launch { userManager.clearData() }
+            toast(context, message)
+            return true
+        }
+    } else {
+        if (message != "") {
+            alertDialog(context, message, "Restart app or try again in few minutes") { }
+            return false
+        } else {
+            return false
+        }
+    }
+}
