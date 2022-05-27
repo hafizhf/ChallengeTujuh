@@ -86,4 +86,7 @@ dependencies {
 
     //ExoPlayer dependency
     implementation 'com.google.android.exoplayer:exoplayer:2.17.1'
+
+    // Library GIF Droidsondroids
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
 }

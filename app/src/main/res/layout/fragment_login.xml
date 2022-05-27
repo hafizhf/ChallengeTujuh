@@ -215,7 +215,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="Restaurant"
+            android:text="Mooview: Chapter 7"
             android:textColor="@color/white"
             android:textSize="28sp"
             android:fontFamily="@font/product_sans_bold"/>
@@ -231,7 +231,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#80000000"/>
+            android:background="#B2000000"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -241,13 +241,19 @@
             android:background="#00000000"
             android:gravity="center_horizontal">
 
-            <androidx.core.widget.ContentLoadingProgressBar
-                style="@style/Widget.AppCompat.ProgressBar"
+<!--            <androidx.core.widget.ContentLoadingProgressBar-->
+<!--                style="@style/Widget.AppCompat.ProgressBar"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:theme="@style/MainTheme"-->
+<!--                android:background="#00000000"-->
+<!--                android:layout_marginBottom="10dp"/>-->
+
+            <pl.droidsonroids.gif.GifImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/MainTheme"
-                android:background="#00000000"
-                android:layout_marginBottom="10dp"/>
+                android:layout_height="100dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/loading_login"/>
 
             <TextView
                 android:layout_width="wrap_content"

@@ -33,7 +33,7 @@ class WatchFragment : Fragment() {
         viewExoPlayer()
     }
 
-    fun viewExoPlayer() {
+    private fun viewExoPlayer() {
         mPlayer = ExoPlayer.Builder(requireContext()).build()
         video_player.player = mPlayer
         video_player_control.player = mPlayer
@@ -55,7 +55,7 @@ class WatchFragment : Fragment() {
         return mediaSource
     }
 
-    fun releasePlayer() {
+    private fun releasePlayer() {
         if (mPlayer == null) {
             return
         }

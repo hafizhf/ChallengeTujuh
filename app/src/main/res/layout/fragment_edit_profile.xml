@@ -238,12 +238,17 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <androidx.core.widget.ContentLoadingProgressBar
-                style="@style/Widget.AppCompat.ProgressBar"
+<!--            <androidx.core.widget.ContentLoadingProgressBar-->
+<!--                style="@style/Widget.AppCompat.ProgressBar"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:theme="@style/MainTheme" />-->
+
+            <pl.droidsonroids.gif.GifImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:theme="@style/MainTheme" />
+                android:layout_height="100dp"
+                android:src="@drawable/loading_login"/>
 
             <TextView
                 android:layout_width="wrap_content"

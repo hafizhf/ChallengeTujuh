@@ -108,14 +108,14 @@
             android:id="@+id/btn_watch_now"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/ic_play"
                 android:layout_marginEnd="4dp"
+                android:src="@drawable/ic_play"
                 app:tint="@color/white" />
 
             <TextView
@@ -123,8 +123,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/product_sans_bold"
                 android:text="Watch Now"
-                android:textSize="16sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
