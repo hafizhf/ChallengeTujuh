@@ -59,6 +59,10 @@ class DetailFragment : Fragment() {
                 addOrRemoveFilmFavorite(userID.toInt(), selectedData)
             }
         })
+
+        btn_watch_now.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_detailFragment_to_watchFragment)
+        }
     }
 
     private fun showSelectedFilmData(detail: GetAllFilmResponseItem) {

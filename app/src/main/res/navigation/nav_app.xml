@@ -70,6 +70,9 @@
         <action
             android:id="@+id/action_detailFragment_to_favoriteFilmFragment"
             app:destination="@id/favoriteFilmFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_watchFragment"
+            app:destination="@id/watchFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFilmFragment"
@@ -80,4 +83,9 @@
             android:id="@+id/action_favoriteFilmFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/watchFragment"
+        android:name="andlima.hafizhfy.challengetujuh.view.main.WatchFragment"
+        android:label="fragment_watch"
+        tools:layout="@layout/fragment_watch" />
 </navigation>
