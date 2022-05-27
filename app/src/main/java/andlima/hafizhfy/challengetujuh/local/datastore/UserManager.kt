@@ -43,9 +43,8 @@ class UserManager(context: Context) {
         }
     }
 
-    suspend fun editUserData(
+    suspend fun updateCurrentUserRealTimeData(
         username: String,
-        email: String,
         avatar: String,
         completeName: String,
         address: String,
@@ -53,7 +52,6 @@ class UserManager(context: Context) {
     ) {
         dataStore.edit {
             it[USERNAME] = username
-            it[EMAIL] = email
             it[AVATAR] = avatar
             it[COMPLETE_NAME] = completeName
             it[ADDRESS] = address

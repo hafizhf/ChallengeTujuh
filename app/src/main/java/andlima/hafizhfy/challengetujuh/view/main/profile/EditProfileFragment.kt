@@ -184,7 +184,7 @@ class EditProfileFragment : Fragment() {
             userManager.password.asLiveData().observe(this, { password ->
 
                 GlobalScope.launch {
-                    userManager.clearData()
+//                    userManager.clearData()
 
                     userManager.loginUserData(
                         username,
