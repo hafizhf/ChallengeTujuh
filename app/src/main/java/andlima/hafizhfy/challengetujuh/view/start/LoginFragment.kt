@@ -1,5 +1,6 @@
 package andlima.hafizhfy.challengetujuh.view.start
 
+import andlima.hafizhfy.challengetujuh.BuildConfig
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -39,6 +40,10 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (BuildConfig.FLAVOR == "free") {
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment)
+        }
 
         // Get something from data store
         userManager = UserManager(requireContext())

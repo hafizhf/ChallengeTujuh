@@ -56,7 +56,7 @@ class ProfileFragment : Fragment() {
                 startActivity(Intent(requireContext(), MainActivity::class.java))
                 requireActivity().overridePendingTransition(0,0)
                 requireActivity().finish()
-//                Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_loginFragment)
+                Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_loginFragment)
             }
         }
     }

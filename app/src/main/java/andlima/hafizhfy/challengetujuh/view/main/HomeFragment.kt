@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.subscribe_popup_modal.*
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -53,6 +54,10 @@ class HomeFragment : Fragment() {
         showDataFromDataStore()
 
         getFilmData()
+
+        btn_later.setOnClickListener {
+            premium_popup.visibility = View.GONE
+        }
 
         btn_goto_favorite.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_favoriteFilmFragment)

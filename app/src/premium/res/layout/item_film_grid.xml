@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="15dp"
+    app:cardElevation="15dp"
+    app:cardCornerRadius="10dp"
+    app:strokeWidth="0dp"
+    app:strokeColor="@color/main_grey"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_film_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:cropToPadding="false"
+            android:src="@drawable/ic_add"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:gravity="bottom"
+            android:background="@drawable/dim_gradient">
+
+            <TextView
+                android:id="@+id/tv_film_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/product_sans_bold"
+                android:textColor="@color/white"
+                android:text="Title"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_film_director"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Director"
+                android:textColor="@color/white"
+                android:fontFamily="@font/product_sans_regular"
+                android:layout_marginEnd="26dp"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</com.google.android.material.card.MaterialCardView>

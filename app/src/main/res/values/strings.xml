@@ -2,4 +2,6 @@
     <string name="app_name">ChallengeTujuh</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="free_app">Moovie 7 Free</string>
+    <string name="premium_app">Moovie 7</string>
 </resources>

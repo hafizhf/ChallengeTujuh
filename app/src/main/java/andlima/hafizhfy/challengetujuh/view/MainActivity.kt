@@ -6,6 +6,7 @@ import andlima.hafizhfy.challengetujuh.func.updateUserDataRealTime
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import andlima.hafizhfy.challengetujuh.BuildConfig
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
@@ -19,8 +20,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        GlobalScope.launch {
-            checkUserData()
+        if (BuildConfig.FLAVOR == "premium") {
+            GlobalScope.launch {
+                checkUserData()
+            }
         }
     }
 

@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import andlima.hafizhfy.challengetujuh.BuildConfig
 
 class DetailFragment : Fragment() {
 
@@ -52,16 +53,18 @@ class DetailFragment : Fragment() {
         val selectedData = arguments?.getParcelable<GetAllFilmResponseItem>("SELECTED_DATA") as GetAllFilmResponseItem
         showSelectedFilmData(selectedData)
 
-        userManager.id.asLiveData().observe(this, { userID ->
-            setCurrentFabStatus(selectedData.title, userID.toInt())
+        if (BuildConfig.FLAVOR == "premium") {
+            userManager.id.asLiveData().observe(this, { userID ->
+                setCurrentFabStatus(selectedData.title, userID.toInt())
 
-            fab_add_to_favorite.setOnClickListener {
-                addOrRemoveFilmFavorite(userID.toInt(), selectedData)
+                fab_add_to_favorite.setOnClickListener {
+                    addOrRemoveFilmFavorite(userID.toInt(), selectedData)
+                }
+            })
+
+            btn_watch_now.setOnClickListener {
+                Navigation.findNavController(view).navigate(R.id.action_detailFragment_to_watchFragment)
             }
-        })
-
-        btn_watch_now.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_detailFragment_to_watchFragment)
         }
     }
 
