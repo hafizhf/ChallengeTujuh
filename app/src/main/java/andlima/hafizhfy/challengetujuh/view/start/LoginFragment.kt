@@ -79,7 +79,7 @@ class LoginFragment : Fragment() {
 
     // END OF OVERRIDE FRAGMENT METHOD -------------------------------------------------------------
 
-    private fun loginAuth(email: String, password: String) {
+    fun loginAuth(email: String, password: String) {
         UserClient.instance.getUser(email)
             .enqueue(object : retrofit2.Callback<List<GetUserItem>>{
                 override fun onResponse(

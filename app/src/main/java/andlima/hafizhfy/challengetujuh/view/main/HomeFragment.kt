@@ -81,7 +81,7 @@ class HomeFragment : Fragment() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun getFilmData() {
+    fun getFilmData() {
         val filmAdapter = AdapterFilm() {
             // onClick item
             val selectedData = bundleOf("SELECTED_DATA" to it)

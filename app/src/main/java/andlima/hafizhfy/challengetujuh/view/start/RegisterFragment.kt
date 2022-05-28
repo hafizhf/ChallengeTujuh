@@ -92,28 +92,34 @@ class RegisterFragment : Fragment() {
 
         when {
             emailFound < 0 -> {
-                requireActivity().runOnUiThread { loading_register.visibility = View.GONE }
-                alertDialog(
-                    requireContext(),
-                    "Register failed",
-                    "Something is wrong, please try again"
-                ) {}
+                requireActivity().runOnUiThread {
+                    loading_register.visibility = View.GONE
+                    alertDialog(
+                        requireContext(),
+                        "Register failed",
+                        "Something is wrong, please try again"
+                    ) {}
+                }
             }
             emailFound > 0 -> {
-                requireActivity().runOnUiThread { loading_register.visibility = View.GONE }
-                showPopUp(
-                    cv_new_email_popup,
-                    tv_new_email_popup,
-                    "Email already used"
-                )
+                requireActivity().runOnUiThread {
+                    loading_register.visibility = View.GONE
+                    showPopUp(
+                        cv_new_email_popup,
+                        tv_new_email_popup,
+                        "Email already used"
+                    )
+                }
             }
             repassword != password -> {
-                requireActivity().runOnUiThread { loading_register.visibility = View.GONE }
-                showPopUp(
-                    cv_re_pwd_popup,
-                    tv_re_pwd_popup,
-                    "Re-enter password not match"
-                )
+                requireActivity().runOnUiThread {
+                    loading_register.visibility = View.GONE
+                    showPopUp(
+                        cv_re_pwd_popup,
+                        tv_re_pwd_popup,
+                        "Re-enter password not match"
+                    )
+                }
             }
             else -> {
                 UserClient.instance.postUser(
